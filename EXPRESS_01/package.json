@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "express": "*",
+    "express": "^4.17.1",
     "jshint": "^2.10.2",
     "pug": "^2.0.3"
   },
