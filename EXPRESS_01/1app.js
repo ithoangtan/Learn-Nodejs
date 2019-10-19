@@ -14,10 +14,8 @@ app.get("/gioiThieu", function(req, res) {
   res.send("I im giới thiệu haha");
 });
 
-app.get("/tinhTong/:so1/:so2", function(req, res) {
-  var so1 = req.params.so1;
-  so1 = parseInt(so1);
-  var so2 = req.params.so2;
-  so2 = parseInt(so2);
-  res.send("<h1>Result: " + (so1 + so2) + "</h1>");
+app.get("/hello", function(req, res) {
+  var firstName = req.query.firstName + "  ";
+  var lastName = req.query.lastName;
+  res.send("<h1>Hello " + (firstName + lastName) + "</h1>");
 });
