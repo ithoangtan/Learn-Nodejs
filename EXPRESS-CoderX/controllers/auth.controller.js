@@ -1,3 +1,5 @@
+var md5 = require("md5");
+
 var db = require("../db");
 
 module.exports.login = function(req, res) {
@@ -7,6 +9,8 @@ module.exports.login = function(req, res) {
 module.exports.postLogin = function(req, res) {
   var email = req.body.email;
   var password = req.body.password;
+  //MD5:
+  password = md5(password);
 
   var user = db
     .get("users")
