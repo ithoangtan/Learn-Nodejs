@@ -6,9 +6,7 @@
     },
     {
       "name": "Hoàng Tấn",
-      "id": "C7Nfm9Rd",
-      "email": "ithoangtan@gmail.com",
-      "password": "827ccb0eea8a706c4c34a16891f84e7b"
+      "id": "C7Nfm9Rd"
     },
     {
       "name": "q",
@@ -16,6 +14,8 @@
     },
     {
       "name": "Hoàng Tấn",
+      "email": "ithoangtan@gmail.com",
+      "password": "e10adc3949ba59abbe56e057f20f883e",
       "phone": "0983 982 933",
       "id": "JsO5GAME"
     }

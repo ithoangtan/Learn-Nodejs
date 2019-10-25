@@ -9,8 +9,6 @@ module.exports.login = function(req, res) {
 module.exports.postLogin = function(req, res) {
   var email = req.body.email;
   var password = req.body.password;
-  //MD5:
-  password = md5(password);
 
   var user = db
     .get("users")
@@ -25,7 +23,9 @@ module.exports.postLogin = function(req, res) {
     return;
   }
 
-  if (user.password !== password) {
+  //MD5 security password:
+  var hashedPassword = md5(password);
+  if (user.password !== hashedPassword) {
     res.render("auth/login", {
       errors: ["Wrong password."],
       values: req.body
@@ -33,6 +33,9 @@ module.exports.postLogin = function(req, res) {
     return;
   }
 
-  res.cookie("userId", user.id);
+  res.cookie("userId", user.id, {
+    signed: true
+  });
+
   res.redirect("/users");
 };
