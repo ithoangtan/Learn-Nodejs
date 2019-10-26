@@ -1,23 +1,25 @@
 {
   "users": [
     {
-      "name": "HOANG TRONG TAN",
-      "id": "lpq6U9tr"
-    },
-    {
       "name": "Hoàng Tấn",
-      "id": "C7Nfm9Rd",
       "email": "ithoangtan@gmail.com",
-      "password": "123456"
-    },
-    {
-      "name": "q",
-      "id": "JDKv4p9O"
+      "password": "e10adc3949ba59abbe56e057f20f883e",
+      "phone": "0983 982 933",
+      "avatar": "uploads\\43dde60c70bcfb3abaad7887375a2ac7",
+      "id": "JsO5GAME"
     },
     {
       "name": "Hoàng Tấn",
       "phone": "0983 982 933",
-      "id": "JsO5GAME"
+      "id": "-q3a-yR4",
+      "avatar": "uploads\\43dde60c70bcfb3abaad7887375a2ac7"
+     
+    },
+    {
+      "name": "Hoàng Tấn",
+      "phone": "123",
+      "id": "YAbYJzEc",
+      "avatar": "uploads\\43dde60c70bcfb3abaad7887375a2ac7"
     }
   ]
 }
