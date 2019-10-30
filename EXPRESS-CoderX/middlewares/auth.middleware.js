@@ -21,6 +21,5 @@ module.exports.requireAuth = function(req, res, next) {
   // Để ta sẽ truyền bằng middleware,
   //để tránh phải truyền user cho mọi render của các controller
   res.locals.user = user;
-
   next();
 };
