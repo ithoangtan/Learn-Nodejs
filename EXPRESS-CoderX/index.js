@@ -1,47 +1,55 @@
-require("dotenv").config();
+require('dotenv').config();
 
-var express = require("express");
-var bodyParser = require("body-parser");
-var cookieParser = require("cookie-parser");
-var csurf = require("csurf");
+var express = require('express');
+var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
+var csurf = require('csurf');
+var mongoose = require('mongoose');
 
-var userRoute = require("./routes/users.route");
-var authRoute = require("./routes/auth.route");
-var productRoute = require("./routes/product.route");
-var cartRoute = require("./routes/cart.route");
-var transferRoute = require("./routes/transfer.route");
+mongoose.connect(process.env.MONGO_URL);
 
-var authMiddleware = require("./middlewares/auth.middleware");
-var sessionMiddleWare = require("./middlewares/session.middleware");
+var userRoute = require('./routes/user.route');
+var authRoute = require('./routes/auth.route');
+var productRoute = require('./routes/product.route');
+var cartRoute = require('./routes/cart.route');
+var transferRoute = require('./routes/transfer.route');
+
+var apiProductRoute = require('./api/routes/product.route');
+
+var authMiddleware = require('./middlewares/auth.middleware');
+var sessionMiddleware = require('./middlewares/session.middleware');
 
 var port = 8000;
 
 var app = express();
-app.set("view engine", "pug");
-app.set("views", "./views");
+
+app.set('view engine', 'pug');
+app.set('views', './views');
 
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
-app.use(cookieParser(process.env.SESSION_SECRET));
-app.use(sessionMiddleWare); //Middileware chạy trên tất cả đường dẫn
-// app.use(csurf({ cookie: true }));
-// app.use(csurf({ cookie: { key: "_csrf", path: "/" } }));
 
-app.use(express.static("public"));
+app.use('/api/products', apiProductRoute);
+
+app.use(cookieParser(process.env.SESSION_SECRET));
+app.use(sessionMiddleware);
+// app.use(csurf({ cookie: true }));
+
+app.use(express.static('public'));
 
 // Routes
-app.get("/", function(req, res) {
-  res.render("index", {
-    name: "AAA"
+app.get('/', function(req, res) {
+  res.render('index', {
+    name: 'AAA'
   });
 });
 
-app.use("/users", authMiddleware.requireAuth, userRoute);
-app.use("/auth", authRoute);
-app.use("/products", productRoute);
-app.use("/cart", cartRoute);
-app.use("/transfer", authMiddleware.requireAuth, transferRoute);
+app.use('/users', authMiddleware.requireAuth, userRoute);
+app.use('/auth', authRoute);
+app.use('/products', productRoute);
+app.use('/cart', cartRoute);
+app.use('/transfer', authMiddleware.requireAuth, transferRoute);
 
 app.listen(port, function() {
-  console.log("Server listening on port " + port);
+  console.log('Server listening on port ' + port);
 });
