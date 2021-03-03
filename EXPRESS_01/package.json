@@ -5,7 +5,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "jshint": "^2.10.2",
-    "pug": "^2.0.3"
+    "pug": "^3.0.1"
   },
   "devDependencies": {
     "cookie-parser": "^1.4.4",
